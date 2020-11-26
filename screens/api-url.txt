@@ -1,0 +1,2 @@
+https://localhost/kun-task/index.php/api/class
+https://localhost/kun-task/index.php/api/student
