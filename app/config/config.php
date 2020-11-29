@@ -23,7 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+
+//echo '<pre>'; print_r($_SERVER); echo '</pre>'; die;
+
+$config['base_url'] = 'https://localhost/kun-task/';
 
 /*
 |--------------------------------------------------------------------------
@@ -469,3 +472,13 @@ $config['time_reference'] = 'local';
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+/*
+|--------------------------------------------------------------------------
+| Pagingation Page Limit
+|--------------------------------------------------------------------------
+|
+| Show per page data on list page limit
+|
+*/
+$config['per_page'] = 5;

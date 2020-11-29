@@ -7,6 +7,7 @@ class Api extends REST_Controller{
 		parent::__construct();
 		$this->load->model('classes_model');
 		$this->load->model('students_model');
+		$this->load->model('video_model');
 		$this->date = date("Y-m-d H:i:s");
 	}
 	
@@ -148,6 +149,52 @@ class Api extends REST_Controller{
 	public function student_delete(){
 		$student_id = $this->uri->segment(3);
 		$return = $this->students_model->delete_student($student_id);
+		$this->response($return); 
+	}
+	
+	/* Video CRUD action start */
+	/**
+	 * Get video data
+	 */ 
+	public function video_get(){
+		$limit = $this->uri->segment(3);
+		$per_page = $this->config->item( 'per_page' );
+		if($limit<2){
+			$limit = 1;
+		}else{
+			$limit = (($limit-1)*$per_page);
+		}
+		$return = $this->video_model->list_video($per_page,$limit);
+		$this->response($return); 
+	}
+	
+	/**
+	 * Add new class data
+	 */ 
+	public function video_put(){
+		$video_id = $this->uri->segment(3);			
+		$video_title = $this->input->get('video_title');
+		$this->validation($video_title);				
+		$return = $this->video_model->create_or_update($video_id,'edit');
+		$this->response($return); 
+	}
+	
+	/**
+	 * Update class data
+	 */ 
+	public function video_post(){
+		$video_title = $this->input->post('video_title');		
+		$this->validation($video_title);		
+		$return = $this->video_model->create_or_update('','add');
+		$this->response($return); 
+	}
+	
+	/**
+	 * Delete class data
+	 */ 	
+	public function video_delete(){
+		$video_id = $this->uri->segment(3);
+		$return = $this->video_model->delete_video($video_id);
 		$this->response($return); 
 	}
 	

@@ -17,7 +17,7 @@ class Classes_model extends CI_Model
 		}else{
 			$data = "Data not found.";
 		}
-		return array("status"=>"sucess","data"=>$data);;
+		return array("status"=>"sucess","data"=>$data);
 	}
 	
 	/**
